@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace Tasky.Forms
 {
@@ -13,7 +8,7 @@ namespace Tasky.Forms
         {
             InitializeComponent();
 
-            MainPage = new Tasky.Forms.MainPage();
+            MainPage = new TaskListPage();
         }
 
         protected override void OnStart()
