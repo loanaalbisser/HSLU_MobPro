@@ -1,4 +1,5 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -16,8 +17,7 @@ namespace Tasky.Droid
             SetContentView(Resource.Layout.TaskListActivity);
 
             _taskListView = FindViewById<ListView>(Resource.Id.listView_tasks);
-            var taskService = new TaskService();
-            var tasks = taskService.LoadTasks();
+            var tasks = TaskService.LoadTasks();
             _taskListView.Adapter = new TaskListAdapter(tasks);
 }
 
@@ -25,6 +25,17 @@ namespace Tasky.Droid
         {
             MenuInflater.Inflate(Resource.Menu.top_menus, menu);
             return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (item.ItemId == Resource.Id.menu_add)
+            {
+                var intent = new Intent(this, typeof(TaskActivity));
+                StartActivity(intent);
+            }
+            
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

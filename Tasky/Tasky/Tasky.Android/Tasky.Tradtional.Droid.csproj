@@ -103,8 +103,5 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_action_add.png" />
   </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\values\style.xml" />
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
 </Project>

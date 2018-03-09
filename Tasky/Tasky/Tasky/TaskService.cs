@@ -3,43 +3,43 @@ using System.Linq;
 
 namespace Tasky
 {
-    public class TaskService
+    public static class TaskService
     {
-        private readonly List<Task> _taskList;
+        static readonly List<Task> TaskList;
 
-        public TaskService()
+        static TaskService()
         {
-            _taskList = new List<Task>();
+            TaskList = new List<Task>();
             CreateDummyTasks();
         }
 
-        public List<Task> LoadTasks()
+        public static List<Task> LoadTasks()
         {
-            return _taskList;
+            return TaskList;
         }
 
-        public Task CreateTask()
+        public static Task CreateTask()
         {
             var newTask = new Task();
-            var nextId = _taskList.Select(task => task.Id).DefaultIfEmpty().Max() + 1;
+            var nextId = TaskList.Select(task => task.Id).DefaultIfEmpty().Max() + 1;
 
             newTask.Id = nextId;
             return newTask;
         }
 
-        public Task GetTask(int taskId)
+        public static Task GetTask(int taskId)
         {
-            return _taskList.SingleOrDefault(task => task.Id == taskId);
+            return TaskList.SingleOrDefault(task => task.Id == taskId);
         }
 
-        public void AddTask(Task task)
+        public static void AddTask(Task task)
         {
-            _taskList.Add(task);
+            TaskList.Add(task);
         }
 
         #region Private Methods
 
-        public void CreateDummyTasks()
+        private static void CreateDummyTasks()
         {
             for (var i = 0; i < 8; i++)
             {
@@ -50,10 +50,9 @@ namespace Tasky
                     Title = "Task " + i,
                     Description = "This is a description"
                 };
-                _taskList.Add(task);
+                TaskList.Add(task);
             }
         }
-        
 
         #endregion
     }

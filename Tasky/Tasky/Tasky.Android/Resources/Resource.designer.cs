@@ -63,11 +63,23 @@ namespace Tasky.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070001
-			public const int listView_tasks = 2131165185;
+			// aapt resource value: 0x7f070004
+			public const int btn_save = 2131165188;
 			
 			// aapt resource value: 0x7f070002
-			public const int menu_edit = 2131165186;
+			public const int edit_description = 2131165186;
+			
+			// aapt resource value: 0x7f070001
+			public const int edit_title = 2131165185;
+			
+			// aapt resource value: 0x7f070005
+			public const int listView_tasks = 2131165189;
+			
+			// aapt resource value: 0x7f070006
+			public const int menu_add = 2131165190;
+			
+			// aapt resource value: 0x7f070003
+			public const int switch_isCompleted = 2131165187;
 			
 			// aapt resource value: 0x7f070000
 			public const int txt_task_title = 2131165184;
@@ -143,10 +155,7 @@ namespace Tasky.Droid
 		{
 			
 			// aapt resource value: 0x7f050000
-			public const int ListViewText = 2131034112;
-			
-			// aapt resource value: 0x7f050001
-			public const int Theme_Tasky = 2131034113;
+			public const int Theme_Tasky = 2131034112;
 			
 			static Style()
 			{
