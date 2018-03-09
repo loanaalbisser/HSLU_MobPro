@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="Theme.Tasky" parent="@android:style/Theme.DeviceDefault.Light">
+    <item name="android:textColorPrimary">#fffafafa</item>
+    <item name="android:colorPrimary">#ffe0e0e0</item>
+    <item name="android:colorControlActivated">#ffd50000</item>
+    <item name="android:colorAccent">#ffd50000</item>
+  </style>
+</resources>

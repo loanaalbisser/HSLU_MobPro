@@ -4,7 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>d9cd6d2e-ca3e-4b7b-a900-937ecec15bf9</ProjectGuid>
+    <ProjectGuid>{D9CD6D2E-CA3E-4B7B-A900-937ECEC15BF9}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Tasky.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
@@ -67,8 +67,9 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Tasky\Tasky.csproj">
-      <Name>Tasky</Name>
+    <ProjectReference Include="..\Tasky\Tasky.Shared.csproj">
+      <Name>Tasky.Shared</Name>
+      <Project>{43ADE3AF-BDDD-4E8C-9D78-1C7FA51E5600}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
