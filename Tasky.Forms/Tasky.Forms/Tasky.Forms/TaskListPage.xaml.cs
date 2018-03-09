@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +10,13 @@ namespace Tasky.Forms
         public TaskListPage()
         {
             InitializeComponent();
+            var taskList = TaskService.LoadTasks();
+            TaskList = new ObservableCollection<Task>(taskList);
+
+            BindingContext = this;
         }
+
+        public ObservableCollection<Task> TaskList { get; set; }
+        
     }
 }
