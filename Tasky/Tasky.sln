@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasky.Android", "Tasky\Tasky.Android\Tasky.Android.csproj", "{07273244-4319-4309-8B91-23AAD2F0C607}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasky.Tradtional.Droid", "Tasky\Tasky.Android\Tasky.Tradtional.Droid.csproj", "{07273244-4319-4309-8B91-23AAD2F0C607}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasky.iOS", "Tasky\Tasky.iOS\Tasky.iOS.csproj", "{D9CD6D2E-CA3E-4B7B-A900-937ECEC15BF9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasky.Traditional.iOS", "Tasky\Tasky.iOS\Tasky.Traditional.iOS.csproj", "{D9CD6D2E-CA3E-4B7B-A900-937ECEC15BF9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasky.Shared", "Tasky\Tasky\Tasky.Shared.csproj", "{43ADE3AF-BDDD-4E8C-9D78-1C7FA51E5600}"
 EndProject

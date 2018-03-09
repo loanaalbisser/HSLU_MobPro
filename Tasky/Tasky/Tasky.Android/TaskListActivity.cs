@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.OS;
+using Android.Views;
 
 namespace Tasky.Droid
 {
@@ -11,7 +12,13 @@ namespace Tasky.Droid
 			base.OnCreate (savedInstanceState);
 			SetContentView (Resource.Layout.TaskListActivity);
 		}
-	}
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.top_menus, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+    }
 }
 
 
