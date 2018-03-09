@@ -10,6 +10,7 @@ namespace Tasky
         public TaskService()
         {
             _taskList = new List<Task>();
+            CreateDummyTasks();
         }
 
         public List<Task> LoadTasks()
@@ -35,5 +36,25 @@ namespace Tasky
         {
             _taskList.Add(task);
         }
+
+        #region Private Methods
+
+        public void CreateDummyTasks()
+        {
+            for (var i = 0; i < 8; i++)
+            {
+                var task = new Task
+                {
+                    Id = i,
+                    IsCompleted = false,
+                    Title = "Task " + i,
+                    Description = "This is a description"
+                };
+                _taskList.Add(task);
+            }
+        }
+        
+
+        #endregion
     }
 }
