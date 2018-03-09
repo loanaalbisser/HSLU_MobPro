@@ -1,5 +1,4 @@
 ﻿using Android.App;
-using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -9,17 +8,15 @@ namespace Tasky.Droid
     [Activity(Label = "Tasky", MainLauncher = true, Icon = "@drawable/icon")]
     public class TaskListActivity : Activity
     {
-        private ListView _taskListView;
+        private TaskListAdapter _taskListAdapter;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.TaskListActivity);
 
-            _taskListView = FindViewById<ListView>(Resource.Id.listView_tasks);
-            var tasks = TaskService.LoadTasks();
-            _taskListView.Adapter = new TaskListAdapter(tasks);
-}
+            FillListWithTasks();
+        }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
@@ -31,11 +28,27 @@ namespace Tasky.Droid
         {
             if (item.ItemId == Resource.Id.menu_add)
             {
-                var intent = new Intent(this, typeof(TaskActivity));
+                var intent = TaskActivity.CreateIntent(this, -1);
                 StartActivity(intent);
             }
             
             return base.OnOptionsItemSelected(item);
+        }
+
+        private void FillListWithTasks()
+        {
+            var taskListView = FindViewById<ListView>(Resource.Id.listView_tasks);
+            var tasks = TaskService.LoadTasks();
+            _taskListAdapter = new TaskListAdapter(tasks);
+            taskListView.Adapter = _taskListAdapter;
+            taskListView.ItemClick += DoOnItemClicked;
+        }
+
+        private void DoOnItemClicked(object sender, AdapterView.ItemClickEventArgs eventArgs)
+        {
+            var task = _taskListAdapter[eventArgs.Position];
+            var intent = TaskActivity.CreateIntent(this, (task.Id));
+            StartActivity(intent);
         }
     }
 }
