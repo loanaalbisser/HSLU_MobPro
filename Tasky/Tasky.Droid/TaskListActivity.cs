@@ -57,7 +57,7 @@ namespace Tasky.Droid
 
         private void UpdateTaskList()
         {
-            var tasks = TaskService.LoadTasks();
+            var tasks = TaskService.GetTasks();
             _taskListAdapter.Update(tasks);
         }
 
