@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿
+
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,6 +19,11 @@ namespace Tasky.Forms
         }
 
         public ObservableCollection<Task> TaskList { get; set; }
-        
+
+        private void OnTaskSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var task = (Task)e.SelectedItem;
+            Navigation.PushAsync(new TaskPage(task));
+        }
     }
 }

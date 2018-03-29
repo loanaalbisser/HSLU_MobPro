@@ -7,8 +7,8 @@ namespace Tasky.Forms
         public App()
         {
             InitializeComponent();
-
-            MainPage = new TaskListPage();
+            
+            MainPage = new NavigationPage(new TaskListPage());
         }
 
         protected override void OnStart()
