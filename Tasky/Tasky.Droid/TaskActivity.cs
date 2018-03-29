@@ -7,7 +7,7 @@ using Tasky.Shared;
 
 namespace Tasky.Droid
 {
-    [Activity(Label = "TaskActivity")]
+    [Activity(Label = "Task Details")]
     public class TaskActivity : Activity
     {
         private const string TaskIdKey = "TaskId";
