@@ -152,6 +152,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Tasky\Tasky.Shared\Tasky.Shared.csproj">
+      <Project>{43ade3af-bddd-4e8c-9d78-1c7fa51e5600}</Project>
+      <Name>Tasky.Shared</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tasky.Forms\Tasky.Forms.csproj">
       <Project>{d6a81e62-8561-4509-9c5e-8184090132cc}</Project>
       <Name>Tasky.Forms</Name>
