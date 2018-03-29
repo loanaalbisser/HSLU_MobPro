@@ -27,19 +27,7 @@ namespace Tasky.Droid
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            var view = convertView;
-
-            if (view == null)
-            {
-                view = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.ListItem, parent, false);
-                var title = view.FindViewById<TextView>(Resource.Id.txt_task_title);
-                view.Tag = new ViewHolder { Title = title };
-            }
-
-            var holder = (ViewHolder)view.Tag;
-            holder.Title.Text = _tasks[position].Title;
-
-            return view;
+            return null;
         }
 
         public override int Count => _tasks.Count;
