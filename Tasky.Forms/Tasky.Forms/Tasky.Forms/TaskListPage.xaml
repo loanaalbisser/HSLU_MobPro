@@ -2,7 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Tasky.Forms.TaskListPage"
-             Title="Personen">
+             Title="Tasks">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="+" Clicked="OnNewTaskCreated" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ListView x:Name="TaskListView" ItemsSource="{Binding TaskList}" ItemSelected="OnTaskSelected">
             <ListView.ItemTemplate>

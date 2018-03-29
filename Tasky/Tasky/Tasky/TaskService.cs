@@ -13,7 +13,7 @@ namespace Tasky
             CreateDummyTasks();
         }
 
-        public static List<Task> LoadTasks()
+        public static List<Task> GetTasks()
         {
             return TaskList;
         }

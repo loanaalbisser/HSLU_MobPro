@@ -1,5 +1,4 @@
-﻿
-
+﻿using System;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,13 +11,27 @@ namespace Tasky.Forms
         public TaskListPage()
         {
             InitializeComponent();
-            var taskList = TaskService.LoadTasks();
-            TaskList = new ObservableCollection<Task>(taskList);
+            TaskList = new ObservableCollection<Task>();
 
             BindingContext = this;
         }
 
-        public ObservableCollection<Task> TaskList { get; set; }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            AddTasksFromService();
+        }
+
+        private void AddTasksFromService()
+        {
+            TaskList.Clear();
+            foreach (var task in TaskService.GetTasks())
+            {
+                TaskList.Add(task);
+            }
+        }
+
+        public ObservableCollection<Task> TaskList { get; }
 
         private void OnTaskSelected(object sender, SelectedItemChangedEventArgs e)
         {
@@ -27,6 +40,11 @@ namespace Tasky.Forms
             var task = (Task)e.SelectedItem;
             TaskListView.SelectedItem = null;
             Navigation.PushAsync(new TaskPage(task));
+        }
+
+        private void OnNewTaskCreated(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new TaskPage(null));
         }
     }
 }

@@ -1,40 +1,57 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
 using System.ComponentModel;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Tasky.Forms
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TaskPage : INotifyPropertyChanged
+    public partial class TaskPage
     {
-        private Task _task;
+        private readonly Task _inputTask;
         
         public TaskPage(Task task)
         {
             InitializeComponent();
+
+            _inputTask = task;
+            Task = new Task();
+            UpdateTaskFromInput();
+
             BindingContext = this;
-            Task = task;
         }
 
-        public new event PropertyChangedEventHandler PropertyChanged;
-        
-        public Task Task
+
+        public Task Task { get; private set; }
+
+        private void OnSaveClicked(object sender, EventArgs e)
         {
-            get
+            if (_inputTask == null)
             {
-                return _task;
+                var newTask = TaskService.CreateTask();
+                newTask.Title = Task.Title;
+                newTask.Description = Task.Description;
+                newTask.IsCompleted = Task.IsCompleted;
+                TaskService.AddTask(newTask);
             }
-            private set
+            else
             {
-                _task = value;
-                RaisePropertyChanged(nameof(Task));
+                _inputTask.Title = Task.Title;
+                _inputTask.Description = Task.Description;
+                _inputTask.IsCompleted = Task.IsCompleted;
             }
+            
+            Navigation.PopAsync(true);
         }
 
-        private void RaisePropertyChanged(string propertyName)
+        private void UpdateTaskFromInput()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (_inputTask == null)
+                return;
+
+            Task.Title = _inputTask.Title;
+            Task.Description = _inputTask.Description;
+            Task.IsCompleted = _inputTask.IsCompleted;
         }
+
     }
 }

@@ -10,6 +10,7 @@
             <Entry Text="{Binding Task.Description, Mode=TwoWay}" TextColor="DarkGray"/>
             <Label Text="Is completed?" />
             <Switch IsToggled="{Binding Task.IsCompleted, Mode=TwoWay}"/>
+            <Button Text="Save" Clicked="OnSaveClicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
