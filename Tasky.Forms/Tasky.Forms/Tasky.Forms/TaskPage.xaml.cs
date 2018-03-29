@@ -1,6 +1,7 @@
 ﻿using System;
-using Tasky.Shared;
+using System.ComponentModel;
 using Xamarin.Forms.Xaml;
+using Tasky.Shared;
 
 namespace Tasky.Forms
 {
@@ -20,6 +21,7 @@ namespace Tasky.Forms
             BindingContext = this;
         }
 
+
         public Task Task { get; private set; }
 
         private void OnSaveClicked(object sender, EventArgs e)
@@ -27,16 +29,12 @@ namespace Tasky.Forms
             if (_inputTask == null)
             {
                 var newTask = TaskService.CreateTask();
-                newTask.Title = Task.Title;
-                newTask.Description = Task.Description;
-                newTask.IsCompleted = Task.IsCompleted;
+                TaskService.AssignTask(Task, newTask);
                 TaskService.AddTask(newTask);
             }
             else
             {
-                _inputTask.Title = Task.Title;
-                _inputTask.Description = Task.Description;
-                _inputTask.IsCompleted = Task.IsCompleted;
+                TaskService.AssignTask(Task, _inputTask);
             }
             
             Navigation.PopAsync(true);
@@ -47,9 +45,7 @@ namespace Tasky.Forms
             if (_inputTask == null)
                 return;
 
-            Task.Title = _inputTask.Title;
-            Task.Description = _inputTask.Description;
-            Task.IsCompleted = _inputTask.IsCompleted;
+            TaskService.AssignTask(_inputTask, Task);
         }
 
     }

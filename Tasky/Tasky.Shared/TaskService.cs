@@ -38,6 +38,15 @@ namespace Tasky.Shared
             TaskList.Add(task);
         }
 
+        public static Task AssignTask(Task inputTask, Task outputTask)
+        {
+            outputTask.Title = inputTask.Title;
+            outputTask.Description = inputTask.Description;
+            outputTask.IsCompleted = inputTask.IsCompleted;
+
+            return outputTask;
+        }
+
         #region Private Methods
 
         private static void CreateDummyTasks()
@@ -47,7 +56,7 @@ namespace Tasky.Shared
                 var task = CreateTask();
                 task.IsCompleted = i % 2 == 0;
                 task.Title = $"Task {i}";
-                task.Description = $"This is the description of task {i}.";
+                task.Description = $"This is the description of outputTask {i}.";
 
                 AddTask(task);
             }

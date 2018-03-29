@@ -7,7 +7,7 @@ using Xamarin.Forms.Xaml;
 namespace Tasky.Forms
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TaskListPage : ContentPage
+    public partial class TaskListPage
     {
         public TaskListPage()
         {
