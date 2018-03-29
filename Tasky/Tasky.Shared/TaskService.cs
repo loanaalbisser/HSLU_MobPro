@@ -51,15 +51,21 @@ namespace Tasky.Shared
 
         private static void CreateDummyTasks()
         {
-            for (var i = 1; i <= 8; i++)
-            {
-                var task = CreateTask();
-                task.IsCompleted = i % 2 == 0;
-                task.Title = $"Task {i}";
-                task.Description = $"This is the description of outputTask {i}.";
+            AddTask(CreateNewTask("Chips","Zweifel"));
+            AddTask(CreateNewTask("Bier",string.Empty));
+            AddTask(CreateNewTask("Nüssli", string.Empty));
+            AddTask(CreateNewTask("Cola", string.Empty));
+            AddTask(CreateNewTask("Pizza",string.Empty));
+            AddTask(CreateNewTask("Oreos", string.Empty));
+        }
 
-                AddTask(task);
-            }
+        private static Task CreateNewTask(string title, string description)
+        {
+            var task = CreateTask();
+            task.Title = title;
+            task.Description = description;
+
+            return task;
         }
 
         #endregion
