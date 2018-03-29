@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using Tasky.Shared;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

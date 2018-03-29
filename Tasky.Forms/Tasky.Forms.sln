@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasky.Forms.UWP", "Tasky.Fo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasky.Forms.iOS", "Tasky.Forms\Tasky.Forms.iOS\Tasky.Forms.iOS.csproj", "{D317A7D5-5C70-4CBF-8F2A-72B1D7C9C057}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasky.Shared", "..\Tasky\Tasky\Tasky\Tasky.Shared.csproj", "{43ADE3AF-BDDD-4E8C-9D78-1C7FA51E5600}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasky.Shared", "..\Tasky\Tasky.Shared\Tasky.Shared.csproj", "{43ADE3AF-BDDD-4E8C-9D78-1C7FA51E5600}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

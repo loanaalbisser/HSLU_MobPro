@@ -1,5 +1,5 @@
 ﻿using System;
-using System.ComponentModel;
+using Tasky.Shared;
 using Xamarin.Forms.Xaml;
 
 namespace Tasky.Forms
@@ -19,7 +19,6 @@ namespace Tasky.Forms
 
             BindingContext = this;
         }
-
 
         public Task Task { get; private set; }
 

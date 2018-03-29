@@ -79,8 +79,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Tasky\Tasky\Tasky\Tasky.Shared.csproj">
-      <Project>{43ADE3AF-BDDD-4E8C-9D78-1C7FA51E5600}</Project>
+    <ProjectReference Include="..\..\..\Tasky\Tasky.Shared\Tasky.Shared.csproj">
+      <Project>{43ade3af-bddd-4e8c-9d78-1c7fa51e5600}</Project>
       <Name>Tasky.Shared</Name>
     </ProjectReference>
   </ItemGroup>
