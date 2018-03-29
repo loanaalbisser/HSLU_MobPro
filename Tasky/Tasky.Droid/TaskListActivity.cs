@@ -2,6 +2,7 @@
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using Tasky.Shared;
 
 namespace Tasky.Droid
 {
@@ -10,12 +11,19 @@ namespace Tasky.Droid
     {
         private TaskListAdapter _taskListAdapter;
 
+        #region Lifecycle Methods
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.TaskListActivity);
+            CreateTaskList();
+        }
 
-            FillListWithTasks();
+        protected override void OnResume()
+        {
+            base.OnResume();
+            UpdateTaskList();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -28,28 +36,39 @@ namespace Tasky.Droid
         {
             if (item.ItemId == Resource.Id.menu_add)
             {
-                var intent = TaskActivity.CreateIntent(this, -1);
+                var intent = TaskActivity.CreateIntent(this);
                 StartActivity(intent);
             }
-            
+
             return base.OnOptionsItemSelected(item);
         }
 
-        private void FillListWithTasks()
+        #endregion
+
+        #region Private Methods
+
+        private void CreateTaskList()
         {
             var taskListView = FindViewById<ListView>(Resource.Id.listView_tasks);
-            var tasks = TaskService.LoadTasks();
-            _taskListAdapter = new TaskListAdapter(tasks);
+            _taskListAdapter = new TaskListAdapter();
             taskListView.Adapter = _taskListAdapter;
             taskListView.ItemClick += DoOnItemClicked;
+        }
+
+        private void UpdateTaskList()
+        {
+            var tasks = TaskService.LoadTasks();
+            _taskListAdapter.Update(tasks);
         }
 
         private void DoOnItemClicked(object sender, AdapterView.ItemClickEventArgs eventArgs)
         {
             var task = _taskListAdapter[eventArgs.Position];
-            var intent = TaskActivity.CreateIntent(this, (task.Id));
+            var intent = TaskActivity.CreateIntent(this, task.Id);
             StartActivity(intent);
         }
+
+        #endregion
     }
 }
 

@@ -3,6 +3,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Widget;
+using Tasky.Shared;
 
 namespace Tasky.Droid
 {
@@ -10,6 +11,7 @@ namespace Tasky.Droid
     public class TaskActivity : Activity
     {
         private const string TaskIdKey = "TaskId";
+        private const int NewTaskId = -1;
         private int _shownTaskId;
 
         private Button _saveButton;
@@ -17,35 +19,47 @@ namespace Tasky.Droid
         private EditText _descriptionInput;
         private Switch _isCompletedSwitch;
 
+        #region Public Methods
+
+        public static Intent CreateIntent(Context context, int taskId = NewTaskId)
+        {
+            var intent = new Intent(context, typeof(TaskActivity));
+            intent.PutExtra(TaskIdKey, taskId);
+            return intent;
+        }
+
+        #endregion
+
+
+        #region Lifecycle Methods
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate (savedInstanceState);
-			SetContentView (Resource.Layout.TaskActivity);
+            base.OnCreate(savedInstanceState);
+
+			SetContentView(Resource.Layout.TaskActivity);
             RetrieveControls();
 
             _shownTaskId = Intent.Extras.GetInt(TaskIdKey);
-
             _saveButton.Click += DoOnSaveButtonClicked;
         }
 
         protected override void OnStart()
         {
             base.OnStart();
-            if (_shownTaskId != -1)
-            {
-                var shownTask = TaskService.GetTask(_shownTaskId);
-                _titleInput.Text = shownTask.Title;
-                _descriptionInput.Text = shownTask.Description;
-                _isCompletedSwitch.Checked = shownTask.IsCompleted;
-            }
+
+            if (_shownTaskId == NewTaskId)
+                return;
+
+            var shownTask = TaskService.GetTask(_shownTaskId);
+            _titleInput.Text = shownTask.Title;
+            _descriptionInput.Text = shownTask.Description;
+            _isCompletedSwitch.Checked = shownTask.IsCompleted;
         }
 
-        public static Intent CreateIntent(Context context, int taskId)
-        {
-            var intent = new Intent(context, typeof(TaskActivity));
-            intent.PutExtra(TaskIdKey, taskId);
-            return intent;
-        }
+        #endregion
+
+        #region Private Methods
 
         private void RetrieveControls()
         {
@@ -57,25 +71,18 @@ namespace Tasky.Droid
 
         private void DoOnSaveButtonClicked(object sender, EventArgs e)
         {
-            Task task;
-            if (_shownTaskId == -1)
-                task = TaskService.CreateTask();
-            else
-                task = TaskService.GetTask(_shownTaskId);
+            var task = _shownTaskId == NewTaskId ? TaskService.CreateTask() : TaskService.GetTask(_shownTaskId);
 
             task.Title = _titleInput.Text;
             task.Description = _descriptionInput.Text;
             task.IsCompleted = _isCompletedSwitch.Checked;
 
-            AddTaskToList(task);
+            if (_shownTaskId == NewTaskId)
+                TaskService.AddTask(task);
 
             Finish();
         }
 
-        private void AddTaskToList(Task task)
-        {
-            if(_shownTaskId == -1)
-            TaskService.AddTask(task);
-        }
+        #endregion
     }
 }
