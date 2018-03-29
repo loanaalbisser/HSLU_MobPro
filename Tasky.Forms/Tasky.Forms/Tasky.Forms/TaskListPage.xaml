@@ -4,15 +4,9 @@
              x:Class="Tasky.Forms.TaskListPage"
              Title="Tasks">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="+" Clicked="OnNewTaskCreated" />
+        
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ListView x:Name="TaskListView" ItemsSource="{Binding TaskList}" ItemSelected="OnTaskSelected">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding Title}" TextColor="Gray"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        
     </ContentPage.Content>
 </ContentPage>

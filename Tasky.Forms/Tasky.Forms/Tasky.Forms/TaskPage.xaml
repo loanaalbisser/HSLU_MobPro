@@ -3,14 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Tasky.Forms.TaskPage">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" Margin="10">
-            <Label Text="Title" />
-            <Entry Text="{Binding Task.Title, Mode=TwoWay}" TextColor="DarkGray" />
-            <Label Text="Description" />
-            <Entry Text="{Binding Task.Description, Mode=TwoWay}" TextColor="DarkGray"/>
-            <Label Text="Is completed?" />
-            <Switch IsToggled="{Binding Task.IsCompleted, Mode=TwoWay}"/>
-            <Button Text="Save" Clicked="OnSaveClicked"></Button>
-        </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>
