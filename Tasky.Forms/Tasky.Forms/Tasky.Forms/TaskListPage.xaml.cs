@@ -22,7 +22,10 @@ namespace Tasky.Forms
 
         private void OnTaskSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            if(e.SelectedItem == null)
+                return;
             var task = (Task)e.SelectedItem;
+            TaskListView.SelectedItem = null;
             Navigation.PushAsync(new TaskPage(task));
         }
     }

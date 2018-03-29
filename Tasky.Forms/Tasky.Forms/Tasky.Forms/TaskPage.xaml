@@ -5,9 +5,9 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Margin="10">
             <Label Text="Title" />
-            <Entry Text="{Binding Task.Title, Mode=TwoWay}" />
+            <Entry Text="{Binding Task.Title, Mode=TwoWay}" TextColor="DarkGray" />
             <Label Text="Description" />
-            <Entry Text="{Binding Task.Description, Mode=TwoWay}"/>
+            <Entry Text="{Binding Task.Description, Mode=TwoWay}" TextColor="DarkGray"/>
             <Label Text="Is completed?" />
             <Switch IsToggled="{Binding Task.IsCompleted, Mode=TwoWay}"/>
         </StackLayout>
