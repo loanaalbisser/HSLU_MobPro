@@ -44,10 +44,10 @@ namespace Tasky.Droid
 
         private void RetrieveControls()
         {
-            _saveButton = FindViewById<Button>(Resource.Id.btn_save);
+            /*_saveButton = FindViewById<Button>(Resource.Id.btn_save);
             _titleInput = FindViewById<EditText>(Resource.Id.edit_title);
             _descriptionInput = FindViewById<EditText>(Resource.Id.edit_description);
-            _isCompletedSwitch = FindViewById<Switch>(Resource.Id.switch_isCompleted);
+            _isCompletedSwitch = FindViewById<Switch>(Resource.Id.switch_isCompleted);*/
         }
         
         #endregion
