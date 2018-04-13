@@ -9,6 +9,7 @@ namespace Tasky.Shared
 
         static TaskService()
         {
+            TaskList = new List<Task>();
             CreateDummyTasks();
         }
 
@@ -41,12 +42,23 @@ namespace Tasky.Shared
 
         private static void CreateDummyTasks()
         {
-            
+            AddTask(CreateNewTask("Chips", "Zweifel"));
+            AddTask(CreateNewTask("Bier", string.Empty));
+            AddTask(CreateNewTask("Nüssli", string.Empty));
+            AddTask(CreateNewTask("Cola", string.Empty));
+            AddTask(CreateNewTask("Pizza", string.Empty));
+            AddTask(CreateNewTask("Oreos", string.Empty));
+
         }
 
         private static Task CreateNewTask(string title, string description)
         {
-            return null;
+            var task = CreateTask();
+            task.Title = title;
+            task.Description = description;
+
+            return task;
+
         }
 
         #endregion
