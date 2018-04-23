@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using System;
+using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -21,17 +22,36 @@ namespace Tasky.Droid
         protected override void OnResume()
         {
             base.OnResume();
+
+            UpdateTaskList();
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (item.ItemId == Resource.Id.menu_add)
+            {
+                
+            }
+            return base.OnOptionsItemSelected(item);
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.top_menus, menu);
+            
             return base.OnCreateOptionsMenu(menu);
         }
 
         #endregion
 
         #region Private Methods
+
+        private void UpdateTaskList()
+        {
+            var tasks = TaskService.GetTasks();
+            _taskListAdapter.Update(tasks);
+        }
+
 
         #endregion
     }

@@ -31,6 +31,19 @@ namespace Tasky.Droid
 
 			SetContentView(Resource.Layout.TaskActivity);
             RetrieveControls();
+
+            _saveButton.Click += DoOnSaveButtonClicked;
+
+        }
+
+        private void DoOnSaveButtonClicked(object sender, EventArgs e)
+        {
+            var task = TaskService.GetTask(_shownTaskId);
+            task.Title = _titleInput.Text;
+            task.Description = _titleInput.Text;
+            task.IsCompleted = _isCompletedSwitch.Checked;
+
+            Finish();
         }
 
         protected override void OnStart()

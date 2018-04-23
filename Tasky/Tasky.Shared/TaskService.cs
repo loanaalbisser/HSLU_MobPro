@@ -35,7 +35,11 @@ namespace Tasky.Shared
 
         public static Task AssignTask(Task inputTask, Task outputTask)
         {
-            return null;
+            outputTask.Title = inputTask.Title;
+            outputTask.Description = inputTask.Description;
+            outputTask.IsCompleted = inputTask.IsCompleted;
+
+            return outputTask;
         }
 
         #region Private Methods
